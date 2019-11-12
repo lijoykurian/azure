@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "parameterObject": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "resouregroupname": "value1",
+                    "field1object1": "field1object1value"
+                },
+                {
+                    "resouregroupname": "value2",
+                    "field1object2": "field1object2value"
+                },
+                {
+                    "resouregroupname": "value5",
+                    "field1object3": "field1object3value"
+                }
+            ]
+        },
+        "rgLocation": {
+            "type": "string"
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {}
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "location": "[parameters('rgLocation')]",
+            "name": "[parameters('parameterObject')[copyIndex()].resouregroupname]",
+            "properties": {},
+            "tags": "[parameters('tags')]",
+            "copy": {
+                "name": "loopName",
+                "count": "[length(parameters('parameterObject'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}

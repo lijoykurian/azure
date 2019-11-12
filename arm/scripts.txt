@@ -1,0 +1,1 @@
+az deployment create --location "Central US" --template-file arrayrm.json --parameters rgLocation=centralus

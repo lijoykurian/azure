@@ -42,5 +42,10 @@
             }
         }
     ],
-    "outputs": {}
+    "outputs": {
+        "subscriptionOutput": {
+            "value": "[concat(subscription(),'/','resourceGroups')]",
+            "type" : "object"
+        }
+    }
 }

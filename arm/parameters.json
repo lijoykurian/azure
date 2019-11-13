@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "parameterObject": {
+            "value":  [{
+                "resouregroupname": "testrg120",
+                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
+            },
+            {
+                "resouregroupname": "testrg233",
+                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
+            },
+            {
+                "resouregroupname": "testrg344",
+                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
+            }]
+           
+        },
+        "rgLocation":{
+            "value":"centralus"
+        }
+    }
+}

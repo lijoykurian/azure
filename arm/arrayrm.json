@@ -5,18 +5,7 @@
         "parameterObject": {
             "type": "array",
             "defaultValue": [
-                {
-                    "resouregroupname": "testrg1",
-                    "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
-                },
-                {
-                    "resouregroupname": "testrg2",
-                    "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
-                },
-                {
-                    "resouregroupname": "testrg3",
-                    "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
-                }
+               
             ]
         },
         "rgLocation": {
@@ -63,7 +52,8 @@
                 "resourceGroup":{"value": "[parameters('parameterObject')[copyIndex()].resouregroupname]"}
 
               }
-            }
+            },
+            "dependsOn": ["loopName"]
           }
     ],
     "outputs": {

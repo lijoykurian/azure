@@ -45,7 +45,9 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2018-05-01",
             "name": "[concat('nestedTemplate', copyIndex())]",
-
+           
+            "resourceGroup": "[parameters('parameterObject')[copyIndex()].resouregroupname]",
+           
             "copy": {
                 "name": "loopresourcegroup",
                 "count": "[length(parameters('parameterObject'))]"
@@ -53,21 +55,18 @@
             "properties": {
               "mode": "Incremental",
               "templateLink": {
-                "uri":"https://github.com/lijoykurian/azure/blob/master/arm/roleassignment.json",
+                "uri":"https://raw.githubusercontent.com/lijoykurian/azure/master/arm/roleassignment.json",
                 "contentVersion":"1.0.0.0"
               },
               "parameters": {
                 "monitoringUsersGroup":{"value": "[parameters('parameterObject')[copyIndex()].roleassignements]"},
-                "resourceGroup":{"value": "parameters('parameterObject')[copyIndex()].resouregroupname"}
+                "resourceGroup":{"value": "[parameters('parameterObject')[copyIndex()].resouregroupname]"}
 
               }
             }
           }
     ],
     "outputs": {
-        "subscriptionOutput": {
-            "value": "[concat(subscription(),'/','resourceGroups')]",
-            "type" : "object"
-        }
+        
     }
 }

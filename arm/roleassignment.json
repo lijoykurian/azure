@@ -2,12 +2,13 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": { 
+
       "monitoringUsersGroup": {
         "type": "array",
         "metadata": {
           "description": "Object ID for the monitoring users group in AAD"
-        },
-        "defaultValue":["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
+        }
+        
       },
       "monitoringContributorRole": {
         "type": "string",
@@ -15,25 +16,35 @@
           "description": "Object ID for the monitoring users group in AAD"
         },
         "defaultValue":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]"
+      },
+      
+      "resourceGroup": {
+        "type": "string",
+        "metadata": {
+          "description": "Object ID for the monitoring users group in AAD"
+        }
       }
+
     },
     "variables": {
+        "rgid":"[concat(subscription().id,'/resourceGroups/',parameters('resourceGroup'))]"
     },
     "resources": [
       {
         "type": "Microsoft.Authorization/roleAssignments",
-        "name": "[guid(resourceGroup().id, parameters('monitoringUsersGroup')[copyIndex()])]",
+        "name": "[guid(variables('rgid'), parameters('monitoringUsersGroup')[copyIndex()])]",
         "apiVersion": "2018-09-01-preview",
         "properties": {
           "roleDefinitionId": "[parameters('monitoringContributorRole')]",
           "principalId": "[parameters('monitoringUsersGroup')[copyIndex()]]",
-          "scope": "[resourceGroup().Id]"
+          "scope": "[variables('rgid')]"
         },
         "copy": {
             "name": "monitoringUsersGroupLoop",
             "count": "[length(parameters('monitoringUsersGroup'))]"
           }   
       }
+      
     ],
     "outputs": {}
   }

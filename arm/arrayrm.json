@@ -6,16 +6,16 @@
             "type": "array",
             "defaultValue": [
                 {
-                    "resouregroupname": "value1",
-                    "field1object1": "field1object1value"
+                    "resouregroupname": "testrg1",
+                    "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
                 },
                 {
-                    "resouregroupname": "value2",
-                    "field1object2": "field1object2value"
+                    "resouregroupname": "testrg2",
+                    "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
                 },
                 {
-                    "resouregroupname": "value5",
-                    "field1object3": "field1object3value"
+                    "resouregroupname": "testrg3",
+                    "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
                 }
             ]
         },
@@ -40,7 +40,29 @@
                 "name": "loopName",
                 "count": "[length(parameters('parameterObject'))]"
             }
-        }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat('nestedTemplate', copyIndex())]",
+
+            "copy": {
+                "name": "loopresourcegroup",
+                "count": "[length(parameters('parameterObject'))]"
+            },
+            "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                "uri":"https://github.com/lijoykurian/azure/blob/master/arm/roleassignment.json",
+                "contentVersion":"1.0.0.0"
+              },
+              "parameters": {
+                "monitoringUsersGroup":{"value": "[parameters('parameterObject')[copyIndex()].roleassignements]"},
+                "resourceGroup":{"value": "parameters('parameterObject')[copyIndex()].resouregroupname"}
+
+              }
+            }
+          }
     ],
     "outputs": {
         "subscriptionOutput": {

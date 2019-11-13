@@ -4,16 +4,22 @@
     "parameters": {
         "parameterObject": {
             "value":  [{
-                "resouregroupname": "testrg120",
-                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
+                "resouregroupname": "rg456",
+                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ],
+                "role":"'b24988ac-6180-42a0-ab88-20f7382dd24c'",
+                "tags":["tag1"]
             },
             {
-                "resouregroupname": "testrg233",
-                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
+                "resouregroupname": "rg458",
+                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807"],
+                "role":"'b24988ac-6180-42a0-ab88-20f7382dd24c'",
+                "tags":["tag1"]
             },
             {
-                "resouregroupname": "testrg344",
-                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ]
+                "resouregroupname": "rg457",
+                "roleassignements": ["7de9f602-70e7-44f1-b961-fa1ced21b807","ff1ce86c-ccbb-48e9-8029-9c91481131c5" ],
+                "role":"'b24988ac-6180-42a0-ab88-20f7382dd24c'",
+                "tags":["tag1"]
             }]
            
         },

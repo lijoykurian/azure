@@ -49,8 +49,8 @@
               },
               "parameters": {
                 "monitoringUsersGroup":{"value": "[parameters('parameterObject')[copyIndex()].roleassignements]"},
-                "resourceGroup":{"value": "[parameters('parameterObject')[copyIndex()].resouregroupname]"}
-
+                "resourceGroup":{"value": "[parameters('parameterObject')[copyIndex()].resouregroupname]"},
+                "monitoringContributorRole":{"value":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c'parameters('parameterObject')[copyIndex()].role)]"}
               }
             },
             "dependsOn": ["loopName"]

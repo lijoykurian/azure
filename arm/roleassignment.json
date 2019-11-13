@@ -14,8 +14,7 @@
         "type": "string",
         "metadata": {
           "description": "Object ID for the monitoring users group in AAD"
-        },
-        "defaultValue":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]"
+        }
       },
       
       "resourceGroup": {
